@@ -15,19 +15,17 @@ Data storage format
 -------------------
 
 A single file with entries (most recent at top) like:
-  01/09/14 hangsnatchhighpull 95x3 95x3 135x3 155x2 195x2 195x2 195x2 "didn't pull high enough at 195"
-  date exercise weightxrep weightxrep ... "notes notes notes"
+::
+
+   01/09/14 hangsnatchhighpull 95x3 95x3 135x3 155x2 195x2 195x2 195x2 "didn't pull high enough at 195"
+   date exercise weightxrep weightxrep ... "notes notes notes"
 
 TODO
 ----
 
-x Data storage
-x CLI add
 - CLI remove
 - Group lifts by date
 - Reorder input by date
 - Flask exact search
-x Flask query
-x Flask recent
 - Flask query date
 - Specify kg vs lbs
