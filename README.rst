@@ -31,6 +31,8 @@ To set units to kg, kg has to be included, but lbs assumed by default. Output cu
 
 A failed set is indicated by a dash: e.g. 65x1-.
 
+Comments can be added with a line starting with '#'.
+
 TODO
 ----
 

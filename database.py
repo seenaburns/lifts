@@ -64,7 +64,8 @@ class DB_Manager():
             cleaned = cleaned[:-len(notes)]
 
         # Remove date, liftname, kg/lbs (if set)
-        elems = [x for x in cleaned.split(' ') if x != '']
+        elems = [x.replace('\n', '') for x in cleaned.split(' ')]
+        elems = [x for x in elems if x != '']
         if elems[2] in ['kg', 'lbs']:
             return elems[3:]
         else:
@@ -101,10 +102,14 @@ class DB_Manager():
 
     def process_results(self, result_list):
         # Processing entires:
+        # - allow comments (starts with #)
         # - convert to kg if needed
         new_results = []
         for result in result_list:
-            if ' kg ' in result:
+            if result[0] == '#':
+                new_results.append(result)
+                continue
+            elif ' kg ' in result:
                 # Convert to lbs
                 new_results.append(self.convert_entry_to_lbs(result))
             else:
