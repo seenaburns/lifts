@@ -73,11 +73,16 @@ class DB_Manager():
     def convert_entry_to_lbs(self, entry):
         kg_sets = self.get_sets(entry)
         lbs_sets = []
+        print kg_sets
         for s in kg_sets:
+            # Extract kg, reps (optional)
             kg = s.split('x')[0]
-            reps = s.split('x')[1]
+            reps = ''
+            if 'x' in s:
+                reps = 'x' + s.split('x')[1]
+
             lbs = int(round(float(kg) * 2.20462))
-            lbs_sets.append('%sx%s' % (str(lbs), reps))
+            lbs_sets.append('%s%s' % (str(lbs), reps))
 
         return_entry = '%s %s %s' % (self.get_date(entry), self.get_liftname(entry), ' '.join(lbs_sets))
         if self.get_notes(entry) is not None:

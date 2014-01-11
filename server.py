@@ -37,6 +37,6 @@ if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] in ['-d', '--debug']:
         # Debug version
         print 'Debug'
-        app.run()
+        app.run(debug=True)
     else:
         app.run(host='0.0.0.0', port=10081)
