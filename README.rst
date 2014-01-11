@@ -24,6 +24,10 @@ TODO
 x Data storage
 x CLI add
 - CLI remove
-- Order different lifts in one day
-- Flask app (query lift, display recent logs, query date)
+- Group lifts by date
+- Reorder input by date
+- Flask exact search
+x Flask query
+x Flask recent
+- Flask query date
 - Specify kg vs lbs
