@@ -7,6 +7,10 @@ I want to be able to track my workouts for each day with relative ease
 and have them hosted so that when at the gym I can look for what I
 previously did for sets/reps/weight if I can't remember.
 
+Personal logs at `http://seenaburns.com/lifts/ <http://seenaburns.com/lifts>`_.
+
+Example query `http://seenaburns.com/lifts/backsquat/ <http://seenaburns.com/lifts/backsquat/`_.
+
 Notes
 -----
 
