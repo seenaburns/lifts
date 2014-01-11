@@ -75,14 +75,19 @@ class DB_Manager():
         lbs_sets = []
         print kg_sets
         for s in kg_sets:
-            # Extract kg, reps (optional)
+            # Extract kg, reps (optional), remove failed if present
             kg = s.split('x')[0]
             reps = ''
             if 'x' in s:
                 reps = 'x' + s.split('x')[1]
+            failed = ''
+            if '-' in s:
+                failed = '-'
+                kg = kg.split('-')[0]
+                reps = reps.split('-')[0]
 
             lbs = int(round(float(kg) * 2.20462))
-            lbs_sets.append('%s%s' % (str(lbs), reps))
+            lbs_sets.append('%s%s%s' % (str(lbs), reps, failed))
 
         return_entry = '%s %s %s' % (self.get_date(entry), self.get_liftname(entry), ' '.join(lbs_sets))
         if self.get_notes(entry) is not None:
