@@ -33,4 +33,8 @@ def search(liftname):
     return Response(output, mimetype='text/plain')
 
 if __name__ == '__main__':
-    app.run()
+    if len(sys.argv) > 1 and sys.argv[2] in ['-d', '--debug']:
+        # Debug version
+        app.run()
+    else:
+        app.run(host='0.0.0.0', port=10081)
