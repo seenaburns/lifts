@@ -1,4 +1,5 @@
 from flask import Flask, request, Response, g
+import sys
 import database
 
 DATAFILE = 'data/lifts.db'
@@ -33,8 +34,9 @@ def search(liftname):
     return Response(output, mimetype='text/plain')
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[2] in ['-d', '--debug']:
+    if len(sys.argv) > 1 and sys.argv[1] in ['-d', '--debug']:
         # Debug version
+        print 'Debug'
         app.run()
     else:
         app.run(host='0.0.0.0', port=10081)

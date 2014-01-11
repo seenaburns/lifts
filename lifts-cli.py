@@ -23,7 +23,7 @@ def usage():
     print '  Alternatively, the data file can be editted directly'
     print ''
     print '  date defaults to today if not included'
-    print '  kg/lb defaults to lb if not included'
+    print '  adding kg after liftname sets units for sets to kg. Defaults to lbs'
     print '  Units: --weight=kg --weight=lbs'
 
 if __name__ == '__main__':
