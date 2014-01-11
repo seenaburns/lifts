@@ -21,8 +21,9 @@ A single file with entries (most recent at top) like:
 TODO
 ----
 
-- Data storage
-- CLI (add, remove)
+x Data storage
+x CLI add
+- CLI remove
 - Order different lifts in one day
 - Flask app (query lift, display recent logs, query date)
 - Specify kg vs lbs
