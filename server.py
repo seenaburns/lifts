@@ -18,7 +18,7 @@ def teardown_request(exception):
 
 @app.route('/')
 def show_logs():
-    logs = g.db.logs(50)
+    logs = g.db.logs(10000)
     output = ''.join(logs)
     return Response(output, mimetype='text/plain')
 
