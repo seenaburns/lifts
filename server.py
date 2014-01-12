@@ -46,16 +46,16 @@ def graph(liftname, reps):
         date = g.db.get_date(l)
         for x in sets:
             data.append((date, x))
-    print data
     
     # Format data for js
-    js_data = ', '.join(['["%s", %s]' % (x[0], x[1]) for x in data])
-    #sets = [(g.db.get_date(x), g.db.get_sets(x)) for x in logs]
-    #set_weights = [[y.split('x')[0].split('-')[0] for y in x] for x in sets]
-    #set_weights = [(weight, 20) for subl in set_weights for weight in subl]
-    #format_weights = ', '.join(['[%s, %s]' % (x[0], x[1]) for x in set_weights])
-    #print set_weights
-    return render_template('graph.html', data=js_data)
+    js_data = []
+    for x in data:
+        js_date = '"%s"' % (x[0])
+        # js_date = 'new Date(20%s,%s,%s)' % (x[0].split('/')[2], x[0].split('/')[1], x[0].split('/')[0])
+        js_array = '[%s, %s]' % (js_date, x[1])
+        js_data.append(js_array)
+    
+    return render_template('graph.html', data=','.join(js_data))
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] in ['-d', '--debug']:
