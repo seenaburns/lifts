@@ -9,7 +9,9 @@ previously did for sets/reps/weight if I can't remember.
 
 Personal logs at `http://seenaburns.com/lifts/ <http://seenaburns.com/lifts>`_.
 
-Example query `http://seenaburns.com/lifts/backsquat/ <http://seenaburns.com/lifts/backsquat/>`_.
+Query `http://seenaburns.com/lifts/backsquat/ <http://seenaburns.com/lifts/backsquat/>`_.
+
+Graph `http://seenaburns.com/lifts/graph/backsquat/x2/ <http://seenaburns.com/lifts/graph/backsquat/x2/>`_.
 
 Notes
 -----
