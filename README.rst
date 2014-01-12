@@ -45,3 +45,4 @@ TODO
 - Reorder input by date
 - Flask exact search
 - Flask query date
+- Graph (e.g. /backsquat/x2/ -> d3 scatterplot)
