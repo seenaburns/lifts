@@ -45,7 +45,8 @@ def graph(liftname, reps):
         # Remove failed
         sets = g.db.get_sets(l)
         sets = [x for x in sets if '-' not in x]
-        sets = [x for x in sets if reps in x or (reps == 'x1' and 'x' not in x)]
+        if reps != '*':
+            sets = [x for x in sets if reps in x or (reps == 'x1' and 'x' not in x)]
         sets = [x.split('x')[0] for x in sets]
         date = g.db.get_date(l)
         for x in sets:
