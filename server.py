@@ -41,21 +41,19 @@ def graph(liftname, reps):
     # Create (date, weight) tuples
     data = []
     for l in logs:
-        # Remove reps, remove failed tag
-        sets = [x.split('x')[0].split('-')[0] for x in g.db.get_sets(l)]
+        # Remove wrong sets
+        # Remove failed
+        sets = g.db.get_sets(l)
+        sets = [x for x in sets if '-' not in x]
+        sets = [x for x in sets if reps in x or (reps == 'x1' and 'x' not in x)]
+        sets = [x.split('x')[0] for x in sets]
         date = g.db.get_date(l)
         for x in sets:
             data.append((date, x))
-    
+
     # Format data for js
-    js_data = []
-    for x in data:
-        js_date = '"%s"' % (x[0])
-        # js_date = 'new Date(20%s,%s,%s)' % (x[0].split('/')[2], x[0].split('/')[1], x[0].split('/')[0])
-        js_array = '[%s, %s]' % (js_date, x[1])
-        js_data.append(js_array)
-    
-    return render_template('graph.html', data=','.join(js_data))
+    js_data = ','.join(['["%s", %s]' % (x[0], x[1]) for x in data])
+    return render_template('graph.html', data=js_data)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] in ['-d', '--debug']:
