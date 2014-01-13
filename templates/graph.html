@@ -47,7 +47,8 @@
   // Get min/max dates, maxweight for scales
   var maxdate = new Date();
   var mindate = new Date();
-  var maxweight = 0;
+  maxdate.setDate(maxdate.getDate() - 160);
+   var maxweight = 0;
   for (var i = 0; i < dataset.length; i++) {
     var d = dataset[i];
     var date = dateFn(d);
@@ -67,7 +68,7 @@
 
   // Background
   svg.append("rect")
-    .attr("width", w - padding * 3)
+    .attr("width", w - padding * 2)
     .attr("height", h - padding * 3)
     .attr("x", padding - 5)
     .attr("y", padding)
