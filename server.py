@@ -40,6 +40,7 @@ def graph(liftname, reps):
     
     # Create (date, weight) tuples
     data = []
+    filtered_logs = []
     for l in logs:
         # Remove wrong sets
         # Remove failed
@@ -51,10 +52,12 @@ def graph(liftname, reps):
         date = g.db.get_date(l)
         for x in sets:
             data.append((date, x))
+        if len(sets) > 0:
+            filtered_logs.append(l)
 
     # Format data for js
     js_data = ','.join(['["%s", %s]' % (x[0], x[1]) for x in data])
-    return render_template('graph.html', data=js_data)
+    return render_template('graph.html', data=js_data, logs=''.join(filtered_logs))
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] in ['-d', '--debug']:
