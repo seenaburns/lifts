@@ -57,6 +57,7 @@ class DB_Manager():
     def get_sets(self, entry):
         # Extract sets (as list) from entry (assumes well formed)
         cleaned = entry
+        print entry.replace('\n', '')
         
         # Remove notes
         notes = self.get_notes(entry)
@@ -74,7 +75,6 @@ class DB_Manager():
     def convert_entry_to_lbs(self, entry):
         kg_sets = self.get_sets(entry)
         lbs_sets = []
-        print kg_sets
         for s in kg_sets:
             # Extract kg, reps (optional), remove failed if present
             kg = s.split('x')[0]
