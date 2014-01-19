@@ -100,14 +100,21 @@ class DB_Manager():
         # Remove uppercase and spaces from lift name
         return name.replace(' ', '').lower()
 
-    def process_results(self, result_list):
+    def process_results(self, result_list, include_comments):
         # Processing entires:
+        # - remove empty lines
         # - allow comments (starts with #)
         # - convert to kg if needed
         new_results = []
         for result in result_list:
+            # Remove empty lines
+            if len(result.replace('\n', '')) == 0:
+                continue
+
+            # Handle comment
             if result[0] == '#':
-                new_results.append(result)
+                if include_comments:
+                    new_results.append(result)
                 continue
             elif ' kg ' in result:
                 # Convert to lbs
@@ -127,13 +134,16 @@ class DB_Manager():
 
     def search(self, name):
         # Search for entries with lift name
+        # * grabs all
         contents = self.db.readlines()
         normal_name = self.normalize_liftname(name)
         results = [x for x in contents if normal_name in x]
-        return self.process_results(results)
+        if name == '*':
+            results = contents
+        return self.process_results(results, False)
 
     def logs(self, limit):
         # Return most recent n logs by date
         # TODO: return by date not by exercise
         contents = self.db.readlines()
-        return self.process_results(contents[:limit])
+        return self.process_results(contents[:limit], True)
